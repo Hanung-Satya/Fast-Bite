@@ -1,0 +1,189 @@
+/*Style Lama*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*Header Style*/
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 2rem;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.gradient-txt {
+    background: linear-gradient(135deg, #FF8000, #CC5500);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.fill-btn {
+    background: linear-gradient(135deg, #FF8000, #CC5500);
+    color: #FFFFFF;
+    padding: 0.6rem 2rem;
+    border-radius: 15px;
+    font-size: 1.1rem;
+}
+
+.outline-btn {
+    background-color: transparent;
+    color: #FF8000;
+    padding: 0.6rem 2rem;
+    border: 2px solid #FF8000;
+    border-radius: 15px;
+    font-size: 1.1rem;
+}
+
+.fill-btn:hover {
+    background: linear-gradient(135deg, #e67000, #b34400);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.outline-btn:hover {
+    background: linear-gradient(135deg, #FF8000, #CC5500);
+    color: #FFFFFF;
+    border: 2px solid #FF8000;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.footer-container {
+    color: #000000;
+    padding: 2rem;
+    text-align: center;
+}
+/*Header End*/
+
+section {
+    height: 85vh;
+}
+
+.fredoka {
+    font-family: 'Fredoka', sans-serif;
+}
+
+.roboto {
+    font-family: 'Roboto Serif', serif;
+}
+
+/*Hero Start*/
+
+.hero-text {
+    flex: 6;
+    border-left: #000000 5px solid;
+    padding: 2rem;
+}
+
+.hero-image {
+    flex: 4;
+}
+
+.hero-image ,img {
+    object-fit: contain;
+}
+/*Hero End*/
+
+/* BestDeals Start*/
+.deal-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #A03D00, #4B1A00);
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.price {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    background: linear-gradient(135deg, #FF8000, #CC5500);
+}
+/* BestDeals End*/
+
+/*Why Us Start*/
+.arrow {
+  display: inline-block;
+  margin-top: 0.4rem;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #FF8000;
+}
+
+.whyUs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+}
+
+.whyUs-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+}
+/* Why Us End */
+
+/* Review Start */
+.review-card {
+    width: 100%;
+    flex: 1;
+    padding: 1rem;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    background-color: #A03D00;
+    border-radius: 10px;
+    margin: 1rem;
+    min-height: 300px;
+    background: linear-gradient(135deg, #A03D00, #4B1A00);
+}
+
+.review-card:hover {
+    scale: 1.02;
+    transition: 0.4s ease-in-out;
+    box-shadow: 4px 4px 10px #4B1A00;
+}
+/* Review End */
