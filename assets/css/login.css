@@ -38,12 +38,8 @@ body {
     padding: 2rem;
     border-radius: 10px;
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     margin: 0 auto;
-    box-sizing: border-box;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
 }
 
 .login-head {
@@ -83,8 +79,6 @@ body {
     font-size: 1.1rem;
 }
 
-
-
 .fill-btn {
     background: linear-gradient(135deg, #FF8000, #CC5500);
     color: #FFFFFF;
@@ -98,4 +92,23 @@ body {
     background: linear-gradient(135deg, #e67000, #b34400);
     cursor: pointer;
     transition: 0.2s ease-in-out;
+}
+
+.outline-btn {
+    background-color: transparent;
+    color: #FF8000;
+    padding: 0.6rem 2rem;
+    border: 2px solid #FF8000;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    width: 100%;
+}
+
+.outline-btn:hover {
+    background: linear-gradient(135deg, #FF8000, #CC5500);
+    color: #FFFFFF;
+    border: 2px solid #FF8000;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    width: 100%;
 }

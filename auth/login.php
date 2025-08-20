@@ -19,17 +19,23 @@
                 <h1 class="font-bold text-4xl">Welcome Back</h1>
                 <p class="login-text">Please enter your details.</p>
             </div>
-            <div class="login-form ">
+            <div class="login-form w-full">
                 <form action="login.php" method="post">
                     <div class="form-group">
                         <input type="email" name="user_email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                            <input type="password" name="user_passsword" placeholder="Your Password" required>
-                        </div>
+                        <input type="password" name="user_passsword" placeholder="Your Password" required>
+                    </div>
                     <div class="form-group">
-                            <button type="submit" name="login" class="fill-btn">Continue</button>
-                        </div>
+                        <button type="submit" name="login" class="fill-btn">Continue</button>
+                    </div>
+                    <!-- <div class="form-group">
+                        <p class="text-center text-xl">OR</p>
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="outline-btn"><i class="fa-brands fa-google"></i> Continue with Google</a>
+                    </div> -->
                 </form>
             </div>
         </div>
