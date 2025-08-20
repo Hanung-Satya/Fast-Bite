@@ -8,7 +8,7 @@ require_once 'database/db.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastBite</title>
+    <title>FastBite - Home</title>
     <link rel="stylesheet" href="/FastBite/assets/css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="/FastBite/assets/js/script.js"></script>

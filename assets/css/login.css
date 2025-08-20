@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #FFB347, #FF8000, #FF3300);
+    background-size: 400% 400%;
+    animation: gradientBg 4s ease infinite;
+}
+
+@keyframes gradientBg {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 50% 100%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.login-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-pic {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+}
+
+
+
+.login-form form {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 1.2rem; 
+    border: 1px solid #000; 
+    border-radius: 12px; 
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+.form-group input::placeholder {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+
+
+.fill-btn {
+    background: linear-gradient(135deg, #FF8000, #CC5500);
+    color: #FFFFFF;
+    padding: 0.6rem 2rem;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+.fill-btn:hover {
+    background: linear-gradient(135deg, #e67000, #b34400);
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
