@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FastBite - Login</title>
-    <link rel="stylesheet" href="../assets//css/login.css">
+    <link rel="stylesheet" href="../assets//css/auth.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="/FastBite/assets/js/script.js"></script>
     <script defer src="https://kit.fontawesome.com/5fd6ecb4fe.js" crossorigin="anonymous"></script>
@@ -13,29 +13,34 @@
 
 <body>
     <div class="wrapper">
-        <div class="login-box">
-            <div class="login-head">
-                <img src="/FastBite/assets/img/burger-logo2.png" alt="logo" class="login-pic">
+        <div class="auth-container">
+            <div class="auth-head">
+                <img src="/FastBite/assets/img/burger-logo2.png" alt="logo" class="auth-pic">
                 <h1 class="font-bold text-4xl">Welcome Back</h1>
                 <p class="login-text">Please enter your details.</p>
             </div>
-            <div class="login-form w-full">
+            <div class="auth-form w-full">
                 <form action="login.php" method="post">
                     <div class="form-group">
-                        <input type="email" name="user_email" placeholder="Your Email" required>
+                        <input type="email" name="user_email" placeholder=" " required>
+                        <label for="user_email">Your Email</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="user_passsword" placeholder="Your Password" required>
+                        <input type="password" name="user_passsword" placeholder=" " required>
+                        <label for="user_password">Your Password</label>
                     </div>
                     <div class="form-group">
                         <button type="submit" name="login" class="fill-btn">Continue</button>
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                         <p class="text-center text-xl">OR</p>
                     </div>
                     <div class="form-group">
                         <a href="#" class="outline-btn"><i class="fa-brands fa-google"></i> Continue with Google</a>
-                    </div> -->
+                    </div>
+                    <div class="form-group">
+                        <a href="#" class="outline-btn"><i class="fa-brands fa-facebook"></i> Continue with Facebook</a>
+                    </div>
                 </form>
             </div>
         </div>
