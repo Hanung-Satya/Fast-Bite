@@ -1,3 +1,7 @@
+<?php
+/*Register PHP*/
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
