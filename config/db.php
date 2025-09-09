@@ -5,9 +5,9 @@ $username = 'root';
 $password = '';
 $dbname = 'fastbite';
 
-$db = mysqli_connect($host, $username, $password, $dbname);
+$conn = mysqli_connect($host, $username, $password, $dbname);
 
-if ($db -> connect_error) {
+if ($conn -> connect_error) {
     die("Koneksi Database Gagal: " . mysqli_connect_error());
 }
 ?>
