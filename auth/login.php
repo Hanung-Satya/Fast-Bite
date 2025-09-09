@@ -66,13 +66,13 @@ if (isset($_POST['login'])) {
                         <?= $error ?>
                     </div>
                 <?php endif; ?>
-                <form action="login.php" method="post">
+                <form action="login.php" method="post" autocomplete="off">
                     <div class="form-group">
-                        <input type="email" name="user_email" placeholder=" " required>
+                        <input type="email" name="user_email" placeholder=" " autocomplete="off" required>
                         <label for="user_email">Your Email</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="user_passsword" placeholder=" " required>
+                        <input type="password" name="user_password" placeholder=" " autocomplete="off" required>
                         <label for="user_password">Your Password</label>
                     </div>
                     <div class="form-group">

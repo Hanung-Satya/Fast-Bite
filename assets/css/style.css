@@ -8,6 +8,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    
+}
+
+html, body {
+    scrollbar-width: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /*Header Style*/
@@ -84,7 +91,7 @@ ul {
 /*Header End*/
 
 section {
-    height: 85vh;
+    min-height: 85vh;
 }
 
 .fredoka {
