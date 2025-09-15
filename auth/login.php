@@ -6,7 +6,7 @@ $error = '';
 
 if (isset($_POST['login'])) {
     $email = $_POST['user_email'];
-    $password = $_POST['user_passsword'];
+    $password = $_POST['user_password'];
 
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
