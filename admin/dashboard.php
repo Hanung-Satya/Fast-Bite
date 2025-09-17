@@ -41,8 +41,8 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                         ?>
                     </div>
                 </div>
-            </div> <!-- end col-md-4 -->
-        </div> <!-- end row -->
+            </div>
+        </div>
         <a href="/FastBite/auth/logout.php" class="btn btn-danger mt-3">Logout</a>
     </main>
 
