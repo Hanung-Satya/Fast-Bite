@@ -65,7 +65,45 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                         </div>
                     </div>
 
-                    
+                    <div class="card p-3 shadow-sm col-11 mx-auto py-4">
+                        <h5 class="mb-3">Daftar Produk</h5>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover align-middle">
+                                <thead class="table-primary">
+                                    <tr>
+                                        <th>Nama</th>
+                                        <th>Harga</th>
+                                        <th>Stok</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $result = $conn->query("SELECT * FROM products ORDER BY id DESC");
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "
+                                            <tr>
+                                                <td>{$row['name']}</td>
+                                                <td>Rp " . number_format($row['price'], 0, ',', '.') . "</td>
+                                                <td>{$row['stock']}</td>
+                                                <td>
+                                                <a href='?delete={$row['id']}' 
+                                                    class='btn btn-danger btn-sm'
+                                                    onclick=\"return confirm('Yakin hapus produk ini?');\">
+                                                    Hapus
+                                                </a>
+                                                </td>
+                                            </tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5' class='text-center'>Belum ada produk</td></tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </main>
         </div>
