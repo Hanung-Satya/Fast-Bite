@@ -82,6 +82,7 @@ if (isset($_POST['add'])) {
                                     <input type="file" name="image" class="form-control" accept="image/*">
                                 </div>
                                 <button type="submit" name="add" class="btn btn-success">Tambah</button>
+                                <a href="manage-product.php" class="btn btn-danger">Kembali</a>
                             </form>
                         </div>
                     </div>
