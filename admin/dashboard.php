@@ -30,10 +30,10 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
             <main class="dashboard col-md-10 ms-sm-auto py-4">
                 <div class="row">
-                    <h2 >Dashboard Overview</h2>
+                    <h2 class="ms-4">Dashboard Overview</h2>
                     <div class="row">
-                        <div class="d-flex flex-row flex-wrap m-4 ">
-                            <div class="preview-card p-4">
+                        <div class="preview-container d-flex flex-row flex-wrap ">
+                            <div class="preview-card p-4 mt-4 mb-4">
                                 <h5 class="card-title">Total Stok Burger</h5>
                                 <p class="card-text fs-2">
                                     <?php
@@ -48,7 +48,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                                 </p>
                             </div>
 
-                            <div class="preview-card p-4">
+                            <div class="preview-card p-4 mt-4 mb-4">
                                 <h5 class="card-title">Menu Tersedia</h5>
                                 <p class="card-text fs-2">
                                     <?php

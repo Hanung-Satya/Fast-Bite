@@ -27,9 +27,8 @@ a {
 
 .sidebar-wrapper {
     position: fixed;
-    width: 250px;
     height: 100vh;
-    background-color: #FFF2F2;
+    background-color: #e7f2ff;
 
 }
 
@@ -65,6 +64,13 @@ a {
 .dashboard {
     min-height: 100vh;
     margin-left: 200px;
+}
+
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem;
 }
 
 .preview-card {
