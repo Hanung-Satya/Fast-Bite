@@ -34,6 +34,40 @@ if (isset($_POST['add'])) {
     exit;
 }
 
+// --- Update Produk ---
+if (isset($_POST['edit'])) {
+    $id    = (int) $_POST['id'];
+    $name  = $_POST['name'];
+    $price = $_POST['price'];
+    $stock = $_POST['stock'];
+
+    $updateQuery = "UPDATE products SET name='$name', price=$price, stock=$stock";
+
+    // Jika gambar baru diupload
+    if (!empty($_FILES['image']['name'])) {
+        $targetDir = "../uploads/";
+        $fileName = time() . "_" . basename($_FILES['image']['name']);
+        $targetFile = $targetDir . $fileName;
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+            // hapus gambar lama
+            $res = $conn->query("SELECT image FROM products WHERE id=$id");
+            if ($res && $row = $res->fetch_assoc()) {
+                if (!empty($row['image']) && file_exists("../uploads/" . $row['image'])) {
+                    unlink("../uploads/" . $row['image']);
+                }
+            }
+            $updateQuery .= ", image='$fileName'";
+        }
+    }
+
+    $updateQuery .= " WHERE id=$id";
+    $conn->query($updateQuery);
+    header("Location: manage-product.php");
+    exit;
+}
+
+
 // --- Hapus Produk ---
 if (isset($_GET['delete'])) {
     $id = (int) $_GET['delete'];
@@ -128,11 +162,12 @@ if (isset($_GET['delete'])) {
                                                 <td>Rp " . number_format($row['price'], 0, ',', '.') . "</td>
                                                 <td>{$row['stock']}</td>
                                                 <td>
-                                                <a href='?delete={$row['id']}' 
+                                                    <a href='?edit=" . $row['id'] . "' class='btn btn-warning btn-sm'>Edit</a>
+                                                    <a href='?delete=" . $row['id'] . "' 
                                                     class='btn btn-danger btn-sm'
                                                     onclick=\"return confirm('Yakin hapus produk ini?');\">
                                                     Hapus
-                                                </a>
+                                                    </a>
                                                 </td>
                                             </tr>";
                                         }
@@ -167,4 +202,5 @@ if (isset($_GET['delete'])) {
         });
     </script>
 </body>
+
 </html>

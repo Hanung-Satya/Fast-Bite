@@ -74,7 +74,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                                         <th>Nama</th>
                                         <th>Harga</th>
                                         <th>Stok</th>
-                                        <th>Aksi</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -87,13 +87,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                                                 <td>{$row['name']}</td>
                                                 <td>Rp " . number_format($row['price'], 0, ',', '.') . "</td>
                                                 <td>{$row['stock']}</td>
-                                                <td>
-                                                <a href='?delete={$row['id']}' 
-                                                    class='btn btn-danger btn-sm'
-                                                    onclick=\"return confirm('Yakin hapus produk ini?');\">
-                                                    Hapus
-                                                </a>
-                                                </td>
+                                                <td>  </td>
                                             </tr>";
                                         }
                                     } else {
