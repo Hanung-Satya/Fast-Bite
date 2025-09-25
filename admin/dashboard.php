@@ -24,7 +24,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
     <div class="container-fluid">
         <div class="row">
-            <nav class="position-fixed">
+            <nav class="col-md-2 d-none d-md-block sidebar-wrapper position-fixed">
                 <?php include '../partials/sidebar.php' ?>
             </nav>
 

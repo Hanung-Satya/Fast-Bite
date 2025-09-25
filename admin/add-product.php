@@ -51,7 +51,7 @@ if (isset($_POST['add'])) {
     <?php include '../partials/dashboard-header.php' ?>
     <div class="container-fluid">
         <div class="row">
-            <nav class="position-fixed">
+            <nav class="col-md-2 d-none d-md-block sidebar-wrapper position-fixed">
                 <?php include '../partials/sidebar.php' ?>
             </nav>
 

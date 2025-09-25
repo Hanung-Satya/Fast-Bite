@@ -39,39 +39,53 @@ if (isset($_POST['edit'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Edit Produk</title>
+    <title>FastBite - Edit Product</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-<?php include '../partials/dashboard-header.php'; ?>
-<div class="container py-4">
-    <h2>Edit Produk</h2>
-    <form method="POST" enctype="multipart/form-data" class="card p-3 shadow-sm col-lg-6">
-        <input type="hidden" name="id" value="<?= $product['id']; ?>">
-        <div class="mb-2">
-            <label class="form-label">Nama Burger</label>
-            <input type="text" name="name" value="<?= $product['name']; ?>" class="form-control" required>
-        </div>
-        <div class="mb-2">
-            <label class="form-label">Harga</label>
-            <input type="number" name="price" value="<?= $product['price']; ?>" class="form-control" required>
-        </div>
-        <div class="mb-2">
-            <label class="form-label">Stok</label>
-            <input type="number" name="stock" value="<?= $product['stock']; ?>" class="form-control" required>
-        </div>
-        <div class="mb-2">
-            <label class="form-label">Gambar Produk</label><br>
-            <?php if (!empty($product['image'])): ?>
-                <img src="../uploads/<?= $product['image']; ?>" width="100" class="mb-2">
-            <?php endif; ?>
-            <input type="file" name="image" class="form-control">
-        </div>
-        <button type="submit" name="edit" class="btn btn-primary">Update</button>
-        <a href="manage-product.php" class="btn btn-secondary">Kembali</a>
-    </form>
-</div>
+    <?php include '../partials/dashboard-header.php'; ?>
+
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block sidebar-wrapper position-fixed">
+            <?php include '../partials/sidebar.php' ?>
+        </nav>
+
+        <main class="dashboard col-md-10 ms-sm-auto py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 mx-auto">
+                    <h2>Edit Produk</h2>
+                    <form method="POST" enctype="multipart/form-data" class="card p-3 shadow-sm col-lg-6">
+                        <input type="hidden" name="id" value="<?= $product['id']; ?>">
+                        <div class="mb-2">
+                            <label class="form-label">Nama Burger</label>
+                            <input type="text" name="name" value="<?= $product['name']; ?>" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Harga</label>
+                            <input type="number" name="price" value="<?= $product['price']; ?>" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Stok</label>
+                            <input type="number" name="stock" value="<?= $product['stock']; ?>" class="form-control" required>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">Gambar Produk</label><br>
+                            <?php if (!empty($product['image'])): ?>
+                                <img src="../uploads/<?= $product['image']; ?>" width="100" class="mb-2">
+                            <?php endif; ?>
+                            <input type="file" name="image" class="form-control">
+                        </div>
+                        <button type="submit" name="edit" class="btn btn-primary">Update</button>
+                        <a href="manage-product.php" class="btn btn-secondary">Kembali</a>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
+
 </html>

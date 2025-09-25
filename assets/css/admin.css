@@ -25,13 +25,27 @@ a {
     padding-left: 2rem;
 }
 
-.sidebar {
-    display: block;
+.sidebar-wrapper {
+    position: fixed;
+    width: 250px;
     height: 100vh;
-    max-width: 200px;
+    background-color: #FFF2F2;
+
+}
+
+.sidebar {
+    max-width: 250px;
+    height: 100%;
+    gap: 1rem;
     padding : 1.8rem;
     font-size: 1rem;
-    background-color: #FFF2F2;
+}
+
+.sidebar a {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
 }
 
 .sidebar-container ul{
@@ -50,6 +64,7 @@ a {
 
 .dashboard {
     min-height: 100vh;
+    margin-left: 200px;
 }
 
 .preview-card {
