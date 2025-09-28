@@ -72,7 +72,7 @@ if (isset($_POST['add'])) {
                                 <div class="mb-2">
                                     <label class="form-label">Deskripsi Singkat (max 50 karakter)</label>
                                     <textarea name="description" id="description" class="form-control" rows="2" required></textarea>
-                                    <small id="descHelp" class="text-muted">0 / 50 Karakter</small>
+                                    <small id="descHelp" class="text-muted">0 / 80 Karakter</small>
                                 </div>
                                 <div class="mb-2">
                                     <label class="form-label">Harga</label>
@@ -120,12 +120,12 @@ if (isset($_POST['add'])) {
         descInput.addEventListener('input', () => {
             let count = descInput.value.length;
 
-            if (count > 50) {
-                descInput.value = descInput.value.substring(0, 50);
-                count = 50;
+            if (count > 80) {
+                descInput.value = descInput.value.substring(0, 80);
+                count = 80;
             }
 
-            descHelp.textContent = count + " / 50 karakter";
+            descHelp.textContent = count + " / 80 karakter";
         });
     </script>
 </body>
