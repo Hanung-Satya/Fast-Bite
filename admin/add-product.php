@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 // --- Tambah Produk ---
 if (isset($_POST['add'])) {
     $name  = $_POST['name'];
+    $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
 
@@ -28,8 +29,8 @@ if (isset($_POST['add'])) {
         }
     }
 
-    $conn->query("INSERT INTO products (name, price, stock, image) 
-                  VALUES ('$name', $price, $stock, '$image')");
+    $conn->query("INSERT INTO products (name, description, price, stock, image, created_at) 
+                  VALUES ('$name', '$description', $price, $stock, '$image', NOW())");
     header("Location: manage-product.php");
     exit;
 }
@@ -69,6 +70,11 @@ if (isset($_POST['add'])) {
                                     <input type="text" name="name" class="form-control" required>
                                 </div>
                                 <div class="mb-2">
+                                    <label class="form-label">Deskripsi Singkat (max 50 karakter)</label>
+                                    <textarea name="description" id="description" class="form-control" rows="2" required></textarea>
+                                    <small id="descHelp" class="text-muted">0 / 50 Karakter</small>
+                                </div>
+                                <div class="mb-2">
                                     <label class="form-label">Harga</label>
                                     <input type="text" id="price_display" class="form-control" required>
                                     <input type="hidden" id="price" name="price">
@@ -95,6 +101,8 @@ if (isset($_POST['add'])) {
     <script>
         priceDisplay = document.getElementById('price_display');
         priceHidden = document.getElementById('price');
+        const descInput = document.getElementById('description');
+        const descHelp = document.getElementById('descHelp');
 
         priceDisplay.addEventListener('input', (e) => {
             let value = e.target.value.replace(/\D/g, "");
@@ -107,6 +115,17 @@ if (isset($_POST['add'])) {
                 e.target.value = "";
                 priceHidden.value = "";
             }
+        });
+
+        descInput.addEventListener('input', () => {
+            let count = descInput.value.length;
+
+            if (count > 50) {
+                descInput.value = descInput.value.substring(0, 50);
+                count = 50;
+            }
+
+            descHelp.textContent = count + " / 50 karakter";
         });
     </script>
 </body>

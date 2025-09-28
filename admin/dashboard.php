@@ -82,13 +82,22 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                                     $result = $conn->query("SELECT * FROM products ORDER BY id DESC");
                                     if ($result->num_rows > 0) {
                                         while ($row = $result->fetch_assoc()) {
+                                            // Cek status stok
+                                            if ($row['stock'] == 0) {
+                                                $status = "<span class='badge bg-danger'>Habis</span>";
+                                            } elseif ($row['stock'] < 5) {
+                                                $status = "<span class='badge bg-warning text-dark'>Stok Rendah</span>";
+                                            } else {
+                                                $status = "<span class='badge bg-success'>Tersedia</span>";
+                                            }
+
                                             echo "
-                                            <tr>
-                                                <td>{$row['name']}</td>
-                                                <td>Rp " . number_format($row['price'], 0, ',', '.') . "</td>
-                                                <td>{$row['stock']}</td>
-                                                <td>  </td>
-                                            </tr>";
+                                                <tr>
+                                                    <td>{$row['name']}</td>
+                                                    <td>Rp " . number_format($row['price'], 0, ',', '.') . "</td>
+                                                    <td>{$row['stock']}</td>
+                                                    <td>{$status}</td>
+                                                </tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='5' class='text-center'>Belum ada produk</td></tr>";

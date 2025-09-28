@@ -41,6 +41,7 @@
                                         <tr>
                                             <th>Gambar</th>
                                             <th>Nama</th>
+                                            <th>Deskripsi</th>
                                             <th>Harga</th>
                                             <th>Stok</th>
                                             <th>Aksi</th>
@@ -54,10 +55,15 @@
                                                 $imgTag = !empty($row['image'])
                                                     ? "<img src='../uploads/{$row['image']}' width='60' class='rounded'>"
                                                     : "<span class='text-muted'>No Image</span>";
+
+                                                $desc = strlen($row['description']) > 50
+                                                    ? substr($row['description'], 0, 50) . "..."
+                                                    : $row['description'];
                                                 echo "
                                                 <tr>
                                                     <td>$imgTag</td>
                                                     <td>{$row['name']}</td>
+                                                    <td>{$desc}</td>
                                                     <td>Rp " . number_format($row['price'], 0, ',', '.') . "</td>
                                                     <td>{$row['stock']}</td>
                                                     <td>
@@ -71,7 +77,7 @@
                                                 </tr>";
                                             }
                                         } else {
-                                            echo "<tr><td colspan='5' class='text-center'>Belum ada produk</td></tr>";
+                                            echo "<tr><td colspan='6' class='text-center'>Belum ada produk</td></tr>";
                                         }
                                         ?>
                                     </tbody>
