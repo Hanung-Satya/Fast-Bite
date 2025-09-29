@@ -39,27 +39,39 @@ require_once 'config/db.php';
         </section>
 
         <section class="mt-12 flex justify-center p-8" id="bestDeals">
-            <div class="bestDeal-container flex flex-col items-center max-w-[1200px] w-full">
-                <h1 class="font-semibold text-4xl">Best <span class="gradient-txt">Deals</span></h1>
-                <div class="bestDeal-item flex gap-8 w-full mt-8 flex-wrap justify-center">
+            <div class="w-full max-w-[1200px] mx-auto">
+                <h1 class="font-semibold text-4xl text-center">
+                    Best <span class="gradient-txt">Deals</span>
+                </h1>
+                <div class="bestDeal-item grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 w-full mt-8">
                     <?php
                     include './config/db.php';
-                    $result = $conn->query("SELECT * FROM products ORDER BY id DESC LIMIT 4"); // ambil 4 produk terbaru
+                    $result = $conn->query("
+                        SELECT * FROM products 
+                        WHERE name IN (
+                            'Spicy Chicken Burger',
+                            'Double Patty Beast',
+                            'Cheesy Hamburger',
+                            'Bacon & Cheese Classic'
+                        )
+                    ");
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $imgPath = !empty($row['image']) ? "/FastBite/uploads/{$row['image']}" : "/FastBite/assets/img/no-image.png";
                             echo "
-                    <div class='deal-card group w-2xs rounded-lg p-4 shadow flex flex-col'>
-                        <img src='{$imgPath}' alt='{$row['name']}' class='deal-img transition-transform duration-300 group-hover:scale-110 h-40 object-cover rounded' />
-                        <h2 class='text-center font-semibold text-2xl fredoka mt-2'>{$row['name']}</h2>
-                        <p class='text-center fredoka text-sm'>{$row['description']}</p>
-                        <div class='card-btn gap-2 mt-auto flex items-center justify-between'>
-                            <p class='price flex-6 text-lg font-semibold p-2 rounded-lg'>Rp " . number_format($row['price'], 0, ',', '.') . "</p>
-                            <a href='/FastBite/cart.php?add={$row['id']}' class='outline-btn flex-4 bg-white'>
-                                <i class='fa-solid fa-cart-plus'></i>
-                            </a>
-                        </div>
-                    </div>";
+                        <div class='deal-card group rounded-lg p-4 shadow flex flex-col h-full'>
+                            <img src='{$imgPath}' alt='{$row['name']}' class='deal-img transition-transform duration-300 group-hover:scale-110 h-40 object-contain mx-auto rounded' />
+                            <h2 class='text-center font-semibold text-2xl fredoka mt-4'>{$row['name']}</h2>
+                            <p class='text-center fredoka text-sm mt-2 flex-grow'>
+                                {$row['description']}
+                            </p>
+                            <div class='card-btn gap-2 mt-auto flex items-center justify-between'>
+                                <p class='price flex-6 text-lg font-semibold p-2 rounded-lg'>$ " . number_format($row['price'], 0, ',', '.') . "</p>
+                                <a href='/FastBite/cart.php?add={$row['id']}' class='outline-btn flex-4 bg-white'>
+                                    <i class='fa-solid fa-cart-plus'></i>
+                                </a>
+                            </div>
+                        </div>";
                         }
                     } else {
                         echo "<p class='text-center text-gray-500'>Belum ada produk tersedia</p>";

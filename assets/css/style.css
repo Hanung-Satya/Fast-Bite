@@ -122,7 +122,9 @@ section {
 /* BestDeals Start*/
 .deal-card {
     display: flex;
-    flex-direction: column;
+    flex-direction: column;;
+    min-height: 380px;
+    justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, #A03D00, #4B1A00);
     color: #FFFFFF;

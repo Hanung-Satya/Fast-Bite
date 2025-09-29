@@ -85,7 +85,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                                             // Cek status stok
                                             if ($row['stock'] == 0) {
                                                 $status = "<span class='badge bg-danger'>Habis</span>";
-                                            } elseif ($row['stock'] < 5) {
+                                            } elseif ($row['stock'] < 20) {
                                                 $status = "<span class='badge bg-warning text-dark'>Stok Rendah</span>";
                                             } else {
                                                 $status = "<span class='badge bg-success'>Tersedia</span>";
@@ -94,7 +94,7 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
                                             echo "
                                                 <tr>
                                                     <td>{$row['name']}</td>
-                                                    <td>Rp " . number_format($row['price'], 0, ',', '.') . "</td>
+                                                    <td>$ " . number_format($row['price'], 0, ',', '.') . "</td>
                                                     <td>{$row['stock']}</td>
                                                     <td>{$status}</td>
                                                 </tr>";

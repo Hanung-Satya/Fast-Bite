@@ -64,7 +64,7 @@
                                                     <td>$imgTag</td>
                                                     <td>{$row['name']}</td>
                                                     <td>{$desc}</td>
-                                                    <td>Rp " . number_format($row['price'], 0, ',', '.') . "</td>
+                                                    <td>$ " . number_format($row['price'], 0, ',', '.') . "</td>
                                                     <td>{$row['stock']}</td>
                                                     <td>
                                                         <a href='edit-product.php?id={$row['id']}' class='btn btn-warning btn-sm'>Edit</a>
