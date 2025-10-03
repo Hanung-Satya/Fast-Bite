@@ -122,6 +122,8 @@ require_once 'config/db.php';
                     </div>
         </section>
 
+        <?php include 'menu.php'?>
+
         <section id="review">
             <div class="review-container flex flex-col p-8 m-16 justify-center">
                 <h1 class="text-4xl roboto text-start mb-8 max-w-[600px]">What They’re Saying About FastBite</h1>

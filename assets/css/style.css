@@ -147,6 +147,21 @@ section {
 }
 /* BestDeals End*/
 
+/*Menu Start*/
+.menu-scroll::-webkit-scrollbar {
+    display: none;
+}
+.menu-scroll {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-scroll > * {
+    scroll-snap-align: start;
+}
+
+/* Menu End */
+
 /*Why Us Start*/
 .arrow {
   display: inline-block;
