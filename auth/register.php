@@ -23,12 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $username, $email, $hashedPassword);
         if ($stmt->execute()) {
-            $_SESSION['user'] = [
-                'id' => $conn->insert_id,
-                'username' => $username,
-                'email' => $email
-            ];
-            header("Location: login.php");
+            // $_SESSION['user'] = [
+            //     'id' => $conn->insert_id,
+            //     'username' => $username,
+            //     'email' => $email
+            // ];
+            // header("Location: login.php");
+            header("Location: /FastBite/auth/login.php?registered=success");
             exit;
         } else {
             $error = "Terjadi kesalahan. Coba lagi nanti.";
@@ -60,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h1 class="font-bold text-4xl">Let’s Get Started</h1>
             </div>
             <div class="auth-form w-full">
-                <form action="register.php" method="post">
+                <form action="register.php" method="post" autocomplete="off">
                     <div class="form-group">
                         <input type="text" name="user_name" placeholder=" " required>
                         <label for="user_name">Your Username</label>

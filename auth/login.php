@@ -17,10 +17,13 @@ if (isset($_POST['login'])) {
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row['password'])) {
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['user_name'] = $row['user_name'];
-            $_SESSION['user_email'] = $row['user_email'];
-            $_SESSION['role'] = $row['role'];
+            $_SESSION['user'] = [
+                'id' => $row['id'],
+                'name' => $row['user_name'],
+                'email' => $row['user_email'],
+                'role' => $row['role']
+            ];
+
 
             if ($row['role'] === 'admin') {
                 header('location: /FastBite/admin/dashboard.php');
@@ -61,6 +64,14 @@ if (isset($_POST['login'])) {
                 <p class="login-text">Please enter your details.</p>
             </div>
             <div class="auth-form w-full">
+                <!-- Pesan Login Sukses -->
+                <?php if (isset($_GET['registered']) && $_GET['registered'] === 'success'): ?>
+                    <div class="text-green-600 text-sm mb-4 text-center">
+                        ✅ Registrasi berhasil! Silakan login.
+                    </div>
+                <?php endif; ?>
+
+                <!-- Pesan Kasalahan Login -->
                 <?php if (!empty($error)): ?>
                     <div class="bg-red-100 text-red-700 p-3 rounded mb-4 text-center">
                         <?= $error ?>
@@ -68,11 +79,11 @@ if (isset($_POST['login'])) {
                 <?php endif; ?>
                 <form action="login.php" method="post" autocomplete="off">
                     <div class="form-group">
-                        <input type="email" name="user_email" placeholder=" " autocomplete="off" required>
+                        <input type="email" name="user_email" placeholder=" " autocomplete="on" required>
                         <label for="user_email">Your Email</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="user_password" placeholder=" " autocomplete="off" required>
+                        <input type="password" name="user_password" placeholder=" " autocomplete="on" required>
                         <label for="user_password">Your Password</label>
                     </div>
                     <div class="form-group">
