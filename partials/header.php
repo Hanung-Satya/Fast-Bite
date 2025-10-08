@@ -17,10 +17,16 @@ if (session_status() == PHP_SESSION_NONE) {
                     <li><a href="/FastBite/cart.php">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a></li>
-                    <li class="user-dropdown">
-                        <a id="user-icon" href="#"><i class="fa-solid fa-circle-user"></i></a>
-                        <ul class="dropdown-menu" hidden>
-                            <li><a href="/auth/logout.php">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li class="user-dropdown relative">
+                        <a id="user-icon" href="#" class="text-xl">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </a>
+                        <ul class="dropdown-menu absolute right-0 top-8 bg-white border border-gray-200 rounded-lg shadow-lg z-50" hidden>
+                            <li>
+                                <a href="/FastBite/auth/logout.php" class="outline-btn flex items-center justify-center gap-2 text-sm py-1 px-3">
+                                    Logout <i class="fa-solid fa-right-from-bracket ml-2"></i>
+                                </a>
+                            </li>
                         </ul>
                     </li>
 

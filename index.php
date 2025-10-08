@@ -67,9 +67,9 @@ require_once 'config/db.php';
                             </p>
                             <div class='card-btn gap-2 mt-auto flex items-center justify-between'>
                                 <p class='price flex-6 text-lg font-semibold p-2 rounded-lg'>$ " . number_format($row['price'], 0, ',', '.') . "</p>
-                                <a href='/FastBite/cart.php?add={$row['id']}' class='outline-btn flex-4 bg-white'>
+                                <button class='add-to-cart-btn outline-btn flex-4 bg-white' data-id='{$row['id']}'>
                                     <i class='fa-solid fa-cart-plus'></i>
-                                </a>
+                                </button>
                             </div>
                         </div>";
                         }
@@ -122,7 +122,7 @@ require_once 'config/db.php';
                     </div>
         </section>
 
-        <?php include 'menu.php'?>
+        <?php include 'menu.php' ?>
 
         <section id="review">
             <div class="review-container flex flex-col p-8 m-16 justify-center">
@@ -172,6 +172,26 @@ require_once 'config/db.php';
             </div>
         </section>
     </main>
+
+    <div id="loginPopup" 
+     class="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center hidden transition-opacity duration-300">
+     
+    <div class="popup-content bg-white rounded-2xl p-6 max-w-md w-full text-center shadow-xl transform scale-95 transition-all duration-300">
+        <h2 class="text-xl font-semibold mb-3 text-gray-800">Let's Log In First 🍔</h2>
+        <p class="text-gray-600 mb-5">Go ahead and log in first to add items to your cart.</p>
+
+        <div class="popup-buttons flex justify-center gap-2">
+            <button id="loginBtn" class="fill-btn">Login</button>
+            <button id="registerBtn" class="outline-btn">Register</button>
+            <button id="closePopup" class="fill-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+    <script>
+        const isLoggedIn = <?= isset($_SESSION['user']) ? 'true' : 'false' ?>;
+    </script>
 
     <?php include 'partials/footer.php'; ?>
 </body>

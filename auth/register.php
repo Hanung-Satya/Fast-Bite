@@ -1,5 +1,40 @@
 <?php
 /*Register PHP*/
+session_start();
+require_once '../config/db.php'; // pastikan file db.php berisi koneksi $conn
+
+// Jika form dikirim
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = trim($_POST['user_name']);
+    $email = trim($_POST['user_email']);
+    $password = trim($_POST['user_password']); // pastikan nama input benar
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Cek apakah email sudah terdaftar
+    $check = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $check->bind_param("s", $email);
+    $check->execute();
+    $result = $check->get_result();
+
+    if ($result->num_rows > 0) {
+        $error = "Email sudah terdaftar. Silakan login.";
+    } else {
+        // Simpan user baru ke database
+        $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $hashedPassword);
+        if ($stmt->execute()) {
+            $_SESSION['user'] = [
+                'id' => $conn->insert_id,
+                'username' => $username,
+                'email' => $email
+            ];
+            header("Location: login.php");
+            exit;
+        } else {
+            $error = "Terjadi kesalahan. Coba lagi nanti.";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +70,7 @@
                         <label for="user_email">Your Email</label>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="user_passsword" placeholder=" " required>
+                        <input type="password" name="user_password" placeholder=" " required>
                         <label for="user_password">Your Password</label>
                     </div>
                     <div class="form-group">
