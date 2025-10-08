@@ -159,5 +159,3 @@ Silakan tambahkan file `LICENSE` jika ingin memperjelas penggunaan.
 ```
 
 ---
-Kalau kamu mau, aku bisa bantu **tambahkan preview gambar otomatis (banner)** di bagian atas README (misalnya header dengan logo Fast-Bite dan background burger).
-Kamu mau aku buatkan versi README + banner-nya juga (siap upload ke repo)?
