@@ -86,8 +86,9 @@ if (isset($_POST['login'])) {
                         <input type="password" name="user_password" placeholder=" " autocomplete="on" required>
                         <label for="user_password">Your Password</label>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" name="login" class="fill-btn">Continue</button>
+                    <div class="form-group flex flex-row gap-4">
+                        <a href="../index.php" class="fill-btn flex-6">Back</a>
+                        <button type="submit" name="login" class="outline-btn text-center flex-4">Continue</button>
                     </div>
                     <div class="form-group">
                         <p class="text-center text-xl">OR</p>
