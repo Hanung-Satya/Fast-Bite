@@ -63,7 +63,7 @@ Fast-Bite/
    ```bash
    git clone https://github.com/Hanung-Satya/Fast-Bite.git
 ````
-
+````
 2. **Letakkan di server lokal**
 
    * Pindahkan folder hasil clone ke direktori `htdocs` (jika pakai XAMPP)
