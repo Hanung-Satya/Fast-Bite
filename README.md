@@ -156,6 +156,5 @@ Silakan tambahkan file `LICENSE` jika ingin memperjelas penggunaan.
 ✨ *Built with love, caffeine, and burgers.* ✨
 
 </div>
-```
 
 ---
