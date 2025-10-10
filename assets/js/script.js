@@ -1,4 +1,4 @@
-// User Icon after login & onclick toggle Menutup
+// User Icon after login & onclick toggle menu
 document.addEventListener('DOMContentLoaded', () => {
   const userIcon = document.getElementById('user-icon');
   const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dropdownMenu.toggleAttribute('hidden');
     });
 
-    // Klik di luar dropdown → tutup menu
+    // If clicked outside the dropdown, it will close
     document.addEventListener('click', (e) => {
       if (!userIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
         dropdownMenu.setAttribute('hidden', true);
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Menampilkan popup dengan animasi
+  // Show popup with animation
   function showPopup() {
     popup.classList.remove('hidden');
     popup.classList.add('flex');
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 10);
   }
 
-  // Menutup popup dengan animasi
+  // Close popup with animation
   function hidePopup() {
     popup.classList.add('opacity-0');
     popupContent.classList.add('scale-95');
@@ -60,12 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 300);
   }
 
-  // Tombol Batal
+  // Cancel button
   if (closeBtn) {
     closeBtn.addEventListener('click', hidePopup);
   }
 
-  // Klik di luar area popup → tutup
+    // If clicked outside the dropdown, it will close
   popup.addEventListener('click', (e) => {
     if (e.target === popup) hidePopup();
   });
@@ -82,3 +82,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Auto Update Cart Quantity

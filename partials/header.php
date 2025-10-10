@@ -1,9 +1,3 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-?>
-
 <header>
     <div class="header-container">
         <a href="/FastBite/index.php" class="logo">Fast<span class="gradient-txt">Bite</span></a>
@@ -23,8 +17,8 @@ if (session_status() == PHP_SESSION_NONE) {
                         </a>
                         <ul class="dropdown-menu absolute right-0 top-8 bg-white border border-gray-200 rounded-lg shadow-lg z-50" hidden>
                             <li>
-                                <a href="/FastBite/auth/logout.php" class="outline-btn flex items-center justify-center gap-2 text-sm py-1 px-3">
-                                    Logout <i class="fa-solid fa-right-from-bracket ml-2"></i>
+                                <a href="/FastBite/auth/logout.php" class="outline-btn rounded-lg flex items-center justify-center gap-2 text-sm py-1 px-3">
+                                    <i class="fa-solid fa-right-from-bracketp8"></i>Logout 
                                 </a>
                             </li>
                         </ul>

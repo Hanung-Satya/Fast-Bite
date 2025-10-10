@@ -5,7 +5,7 @@
     }
 ?>
 
-<section id="menu" class="mt-12 flex justify-center p-8">
+<section id="menu" class="mt-16 flex justify-center p-8">
     <div class="w-full max-w-[1200px] mx-auto">
                 <h1 class="font-semibold text-4xl text-center">
                     Menu
