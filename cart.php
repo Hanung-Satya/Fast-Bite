@@ -63,7 +63,7 @@ if (isset($_GET['remove'])) {
 if (isset($_POST['update_cart'])) {
     foreach ($_POST['qty'] as $id => $qty) {
         $id = intval($id);
-        $qty = intval($qty);
+        $qty = max(1, intval($qty));
 
         if (isset($_SESSION['cart'][$id])) {
             if ($qty <= 0) {

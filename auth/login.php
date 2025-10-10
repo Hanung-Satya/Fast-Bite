@@ -2,12 +2,14 @@
 /*Login PHP*/
 session_start();
 include '../config/db.php';
+
 $error = '';
 
 if (isset($_POST['login'])) {
     $email = $_POST['user_email'];
     $password = $_POST['user_password'];
 
+    // Ambil user berdasarkan email
     $sql = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
@@ -16,29 +18,30 @@ if (isset($_POST['login'])) {
 
     if ($result->num_rows === 1) {
         $row = $result->fetch_assoc();
+
+        // Verifikasi password
         if (password_verify($password, $row['password'])) {
-            $_SESSION['user'] = [
-                'id' => $row['id'],
-                'name' => $row['user_name'],
-                'email' => $row['user_email'],
-                'role' => $row['role']
-            ];
+            // Simpan semua data di session
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['name'];
+            $_SESSION['user_email'] = $row['email'];
+            $_SESSION['role'] = $row['role'];
 
-
+            // Cek role dan arahkan ke halaman sesuai
             if ($row['role'] === 'admin') {
-                header('location: /FastBite/admin/dashboard.php');
+                header('Location: /FastBite/admin/dashboard.php');
                 exit();
             } else {
-                header('location: /FastBite/index.php');
+                header('Location: /FastBite/index.php');
                 exit();
             }
         } else {
-            $error = 'Password Salah, Silahkan coba lagi!';
+            $error = 'Password salah. Silakan coba lagi.';
         }
     } else {
-        $error = 'Email tidak ditemukan. Silahkan register terlebih dahulu';
+        $error = 'Email tidak ditemukan. Silakan daftar terlebih dahulu.';
     }
-}
+}  
 
 ?>
 

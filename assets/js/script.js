@@ -1,3 +1,56 @@
+// Fake Website Popup Alert
+// TA popup — show once unless user checks "Don't show this again"
+(function () {
+  const key = 'fastbite_ta_notice_v1';
+  // don't show if already dismissed
+  if (localStorage.getItem(key) === 'hidden') return;
+
+  // ensure DOM ready
+  document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('ta-popup');
+    const backdrop = document.getElementById('ta-backdrop');
+    const card = document.getElementById('ta-card');
+    const closeBtn = document.getElementById('ta-close');
+    const okBtn = document.getElementById('ta-ok');
+    const dont = document.getElementById('ta-dont');
+
+    if (!popup || !backdrop || !card) return;
+
+    // show with animation
+    popup.classList.remove('hidden');
+    // small timeout to allow transition
+    requestAnimationFrame(() => {
+      backdrop.classList.add('opacity-100');
+      card.classList.remove('opacity-0', 'scale-95');
+    });
+
+    function hide(andRemember = false) {
+      // animate out
+      backdrop.classList.remove('opacity-100');
+      card.classList.add('opacity-0', 'scale-95');
+      // after animation remove element
+      setTimeout(() => {
+        popup.classList.add('hidden');
+      }, 300);
+
+      if (andRemember && dont && dont.checked) {
+        try { localStorage.setItem(key, 'hidden'); } catch(e) { /* ignore */ }
+      }
+    }
+
+    closeBtn?.addEventListener('click', () => hide(true));
+    okBtn?.addEventListener('click', () => hide(dont.checked));
+    backdrop?.addEventListener('click', () => hide(dont.checked));
+
+    // allow Esc to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') hide(dont.checked);
+    });
+  });
+})();
+
+
+
 // User Icon after login & onclick toggle menu
 document.addEventListener('DOMContentLoaded', () => {
   const userIcon = document.getElementById('user-icon');
@@ -82,5 +135,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-
-// Auto Update Cart Quantity
