@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (userIcon && dropdownMenu) {
     userIcon.addEventListener('click', (e) => {
       e.preventDefault();
-      dropdownMenu.toggleAttribute('hidden');
+      e.stopPropagation();
+      dropdownMenu.removeAttribute('hidden');
     });
 
     // If clicked outside the dropdown, it will close

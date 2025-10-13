@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-<footer>
+<footer class="bg-orange-100">
     <div class="footer-container">
         <p>&copy; 2025 FastBite. All rights reserved.</p>
     </div>

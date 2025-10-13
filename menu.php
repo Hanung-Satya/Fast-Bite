@@ -5,9 +5,9 @@
     }
 ?>
 
-<section id="menu" class="mt-16 flex justify-center p-8">
-    <div class="w-full max-w-[1200px] mx-auto">
-                <h1 class="font-semibold text-4xl text-center">
+<section id="menu" class="flex justify-center p-8 bg-orange-100">
+    <div class="w-full max-w-[1200px] my-auto mx-auto">
+                <h1 class="font-semibold text-4xl text-center ">
                     Menu
                 </h1>
                 <div class="menu-scroll flex gap-6 overflow-x-auto mt-8 pb-4 select-none">

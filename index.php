@@ -20,11 +20,13 @@ require_once 'config/db.php';
     <script defer src="https://kit.fontawesome.com/5fd6ecb4fe.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body id="home">
     <?php include 'partials/header.php'; ?>
     <main>
         <section class="hero-section flex items-center justify-center">
-            <div class="hero-container flex items-center justify-between max-w-[1200px] mx-auto w-full gap-8">
+
+        
+            <div class="hero-container flex items-center justify-between max-w-[1200px] mx-auto my-auto w-full gap-8">
                 <div class="hero-text">
                     <p class="subtitle text-4xl text-black pb-4 roboto">Taste the Flavor</p>
                     <h1 class="headline text-5xl text-black font-bold pb-2">BITE INTO HAPPINESS!</h1>
@@ -41,8 +43,8 @@ require_once 'config/db.php';
             </div>
         </section>
 
-        <section class="mt-12 flex justify-center p-8" id="bestDeals">
-            <div class="w-full max-w-[1200px] mx-auto">
+        <section class=" flex justify-center p-8" id="bestDeals">
+            <div class="w-full max-w-[1200px] mx-auto my-auto">
                 <h1 class="font-semibold text-4xl text-center">
                     Best <span class="gradient-txt">Deals</span>
                 </h1>
@@ -84,7 +86,7 @@ require_once 'config/db.php';
             </div>
         </section>
 
-        <section id="whyUs" class="mt-12 flex justify-center p-8">
+        <section id="whyUs" class=" flex justify-center p-8">
             <div class="whyUs-container w-full ">
                 <div class="whyUs-content gap-8">
                     <div class="whyUs-img flex-4">
@@ -176,20 +178,20 @@ require_once 'config/db.php';
         </section>
     </main>
 
-    <div id="loginPopup" 
-     class="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center hidden transition-opacity duration-300">
-     
-    <div class="popup-content bg-white rounded-2xl p-6 max-w-md w-full text-center shadow-xl transform scale-95 transition-all duration-300">
-        <h2 class="text-xl font-semibold mb-3 text-gray-800">Let's Log In First 🍔</h2>
-        <p class="text-gray-600 mb-5">Go ahead and log in first to add items to your cart.</p>
+    <div id="loginPopup"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center hidden transition-opacity duration-300">
 
-        <div class="popup-buttons flex justify-center gap-2">
-            <button id="loginBtn" class="fill-btn">Login</button>
-            <button id="registerBtn" class="outline-btn">Register</button>
-            <button id="closePopup" class="fill-btn">Cancel</button>
+        <div class="popup-content bg-white rounded-2xl p-6 max-w-md w-full text-center shadow-xl transform scale-95 transition-all duration-300">
+            <h2 class="text-xl font-semibold mb-3 text-gray-800">Let's Log In First 🍔</h2>
+            <p class="text-gray-600 mb-5">Go ahead and log in first to add items to your cart.</p>
+
+            <div class="popup-buttons flex justify-center gap-2">
+                <button id="loginBtn" class="fill-btn">Login</button>
+                <button id="registerBtn" class="outline-btn">Register</button>
+                <button id="closePopup" class="fill-btn">Cancel</button>
+            </div>
         </div>
     </div>
-</div>
 
 
     <script>

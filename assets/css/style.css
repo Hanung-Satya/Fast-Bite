@@ -8,7 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    
+    scroll-behavior: smooth;
 }
 
 html, body {
@@ -18,8 +18,18 @@ html, body {
 }
 
 /*Header Style*/
+header {
+    top: 0;
+    left: 0;
+    width: 100%;      /* penuh ke layar */
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 .header-container {
     display: flex;
+    width: 100%;
     justify-content: space-between;
     height: 80px;
     padding: 0 2rem;
@@ -91,7 +101,7 @@ ul {
 /*Header End*/
 
 section {
-    min-height: 85vh;
+    min-height: 90vh;
 }
 
 .fredoka {

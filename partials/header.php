@@ -1,9 +1,9 @@
-<header>
+<header class="fixed">
     <div class="header-container">
-        <a href="/FastBite/index.php" class="logo">Fast<span class="gradient-txt">Bite</span></a>
+        <a href="/FastBite/index.php#home" class="logo">Fast<span class="gradient-txt">Bite</span></a>
         <nav class="navbar">
             <ul class="ul-links">
-                <li><a href="/FastBite/index.php">Home</a></li>
+                <li><a href="/FastBite/index.php#home">Home</a></li>
                 <li><a href="/FastBite/index.php#whyUs">Why Us</a></li>
                 <li><a href="/FastBite/index.php#menu">Menu</a></li>
 

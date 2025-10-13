@@ -22,10 +22,12 @@ if (isset($_POST['login'])) {
         // Verifikasi password
         if (password_verify($password, $row['password'])) {
             // Simpan semua data di session
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['user_name'] = $row['name'];
-            $_SESSION['user_email'] = $row['email'];
-            $_SESSION['role'] = $row['role'];
+            $_SESSION['user'] = [
+                $_SESSION['user_id'] = $row['id'],
+                $_SESSION['user_name'] = $row['name'],
+                $_SESSION['user_email'] = $row['email'],
+                $_SESSION['role'] = $row['role']
+            ];
 
             // Cek role dan arahkan ke halaman sesuai
             if ($row['role'] === 'admin') {
