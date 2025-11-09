@@ -281,3 +281,79 @@ body {
     min-height: 380px;
   }
 }
+
+/* --- MOBILE FRIENDLY AUTH PAGE --- */
+@media (max-width: 768px) {
+
+  body {
+    background: linear-gradient(135deg, #FFB347, #FF8000);
+    background-size: cover;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem 0;
+    align-items: flex-start;
+  }
+
+  .auth-container {
+    width: 90%;
+    max-width: 380px;
+    padding: 1.5rem 1rem;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  }
+
+  .auth-head img.auth-pic {
+    max-width: 120px;
+    margin-bottom: 1rem;
+  }
+
+  .auth-head h1 {
+    font-size: 1.8rem;
+  }
+
+  .auth-head p.login-text {
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .auth-form form {
+    gap: 1rem;
+  }
+
+  .form-group input {
+    font-size: 1rem;
+    padding: 0.9rem 1rem 0.6rem 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .fill-btn, 
+  .outline-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+  }
+
+  .form-group.flex {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .form-group p {
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  .text-xl {
+    font-size: 1rem !important;
+  }
+}

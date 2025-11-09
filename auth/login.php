@@ -1,4 +1,4 @@
-<<?php
+<?php
 /* Login PHP */
 session_start();
 include '../config/db.php';
@@ -77,7 +77,7 @@ if (isset($_POST['login'])) {
                 <!-- Pesan Login Sukses -->
                 <?php if (isset($_GET['registered']) && $_GET['registered'] === 'success'): ?>
                     <div class="text-green-600 text-sm mb-4 text-center">
-                        ✅ Registrasi berhasil! Silakan login.
+                        Registrasi berhasil! Silakan login.
                     </div>
                 <?php endif; ?>
 
