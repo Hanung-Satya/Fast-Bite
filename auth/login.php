@@ -1,7 +1,10 @@
-<?php
-/*Login PHP*/
+<<?php
+/* Login PHP */
 session_start();
 include '../config/db.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 $error = '';
 
@@ -10,31 +13,32 @@ if (isset($_POST['login'])) {
     $password = $_POST['user_password'];
 
     // Ambil user berdasarkan email
-    $sql = "SELECT * FROM users WHERE email = ?";
+    $sql = "SELECT id, name, email, password, role FROM users WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $stmt->store_result();
 
-    if ($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($id, $name, $email_db, $hashedPassword, $role);
+        $stmt->fetch();
 
         // Verifikasi password
-        if (password_verify($password, $row['password'])) {
+        if (password_verify($password, $hashedPassword)) {
             // Simpan semua data di session
-            $_SESSION['user'] = [
-                $_SESSION['user_id'] = $row['id'],
-                $_SESSION['user_name'] = $row['name'],
-                $_SESSION['user_email'] = $row['email'],
-                $_SESSION['role'] = $row['role']
-            ];
+           $_SESSION['user'] = [
+            $_SESSION['user_id'] = $id,
+            $_SESSION['user_name'] = $name,
+            $_SESSION['user_email'] = $email_db,
+            $_SESSION['role'] = $role,
+           ];
 
-            // Cek role dan arahkan ke halaman sesuai
-            if ($row['role'] === 'admin') {
-                header('Location: /FastBite/admin/dashboard.php');
+            // Arahkan ke halaman sesuai role
+            if ($role === 'admin') {
+                header('Location: ../admin/dashboard.php');
                 exit();
             } else {
-                header('Location: /FastBite/index.php');
+                header('Location: ../index.php');
                 exit();
             }
         } else {
@@ -43,9 +47,9 @@ if (isset($_POST['login'])) {
     } else {
         $error = 'Email tidak ditemukan. Silakan daftar terlebih dahulu.';
     }
-}  
-
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,8 +59,9 @@ if (isset($_POST['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FastBite - Login</title>
     <link rel="stylesheet" href="../assets//css/auth.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="/FastBite/assets/js/script.js"></script>
+    <link rel="stylesheet" href="../assets/css/output.css">
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer src="./assets/js/script.js"></script>
     <script defer src="https://kit.fontawesome.com/5fd6ecb4fe.js" crossorigin="anonymous"></script>
 </head>
 
@@ -64,7 +69,7 @@ if (isset($_POST['login'])) {
     <div class="wrapper">
         <div class="auth-container">
             <div class="auth-head">
-                <img src="/FastBite/assets/img/burger-logo2.png" alt="logo" class="auth-pic">
+                <img src="./assets/img/burger-logo2.png" alt="logo" class="auth-pic">
                 <h1 class="font-bold text-4xl">Welcome Back</h1>
                 <p class="login-text">Please enter your details.</p>
             </div>

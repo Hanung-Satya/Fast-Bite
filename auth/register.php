@@ -1,42 +1,42 @@
 <?php
-/*Register PHP*/
+/* Register PHP */
 session_start();
-require_once '../config/db.php'; // pastikan file db.php berisi koneksi $conn
+require_once '../config/db.php';
 
-// Jika form dikirim
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$error = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['user_name']);
     $email = trim($_POST['user_email']);
-    $password = trim($_POST['user_password']); // pastikan nama input benar
+    $password = trim($_POST['user_password']);
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Cek apakah email sudah terdaftar
-    $check = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $check = $conn->prepare("SELECT id FROM users WHERE email = ?");
     $check->bind_param("s", $email);
     $check->execute();
-    $result = $check->get_result();
+    $check->store_result();
 
-    if ($result->num_rows > 0) {
+    if ($check->num_rows > 0) {
         $error = "Email sudah terdaftar. Silakan login.";
     } else {
         // Simpan user baru ke database
         $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $username, $email, $hashedPassword);
         if ($stmt->execute()) {
-            // $_SESSION['user'] = [
-            //     'id' => $conn->insert_id,
-            //     'username' => $username,
-            //     'email' => $email
-            // ];
-            // header("Location: login.php");
-            header("Location: /FastBite/auth/login.php?registered=success");
+            header("Location: login.php?registered=success");
             exit;
         } else {
-            $error = "Terjadi kesalahan. Coba lagi nanti.";
+            $error = "Something Wrong. Try Again later.";
         }
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,8 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/burger-logo.webp">
     <meta name="theme-color" content="#FF8000">
     <link rel="stylesheet" href="../assets//css/auth.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="/FastBite/assets/js/script.js"></script>
+    <link rel="stylesheet" href="../assets/css/output.css">
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer src="../assets/js/script.js"></script>
     <script defer src="https://kit.fontawesome.com/5fd6ecb4fe.js" crossorigin="anonymous"></script>
 </head>
 
@@ -57,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="wrapper">
         <div class="auth-container">
             <div class="auth-head">
-                <img src="/FastBite/assets/img/burger-logo2.png" alt="logo" class="auth-pic">
+                <img src="../assets/img/burger-logo2.png" alt="logo" class="auth-pic">
                 <h1 class="font-bold text-4xl">Let’s Get Started</h1>
             </div>
             <div class="auth-form w-full">

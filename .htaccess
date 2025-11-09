@@ -1,0 +1,41 @@
+# ==============================
+# FastBite .htaccess Configuration
+# ==============================
+
+<IfModule LiteSpeed>
+CacheDisable public /
+</IfModule>
+
+
+# URL rewriting
+RewriteEngine On
+RewriteBase /
+
+# Remove index.php on URL
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/index\.php [NC]
+RewriteRule ^index\.php(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Remove .php on URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^([^/]+)/?$ $1.php [L]
+
+# Ensure original files and folders can still be accessed
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Default file index.php
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+
+# ==============================
+# Security Settings
+# ==============================
+
+# Blocking access to sensitive file
+<FilesMatch "(\.env|\.htaccess|config\.php|db\.php)">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# Turn Of directory listing
+Options -Indexes

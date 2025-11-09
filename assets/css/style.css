@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+@import "tailwindcss";
 
 * {
     margin: 0;
@@ -21,7 +22,7 @@ html, body {
 header {
     top: 0;
     left: 0;
-    width: 100%;      /* penuh ke layar */
+    width: 100%;
     z-index: 1000;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -62,6 +63,18 @@ ul {
     gap: 2rem;
 }
 
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: #ff8000;
+  cursor: pointer;
+  transition: 0.3s ease;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-25%);
+  z-index: 1100;
+}
+
 .fill-btn {
     background: linear-gradient(135deg, #FF8000, #CC5500);
     color: #FFFFFF;
@@ -71,7 +84,7 @@ ul {
 }
 
 .outline-btn {
-    background-color: transparent;
+    background-color: white;
     color: #FF8000;
     padding: 0.6rem 2rem;
     border: 2px solid #FF8000;
@@ -158,22 +171,46 @@ section {
 /* BestDeals End*/
 
 /*Menu Start*/
-.menu-scroll::-webkit-scrollbar {
-    display: none;
-}
 .menu-scroll {
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.menu-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.menu-scroll::-webkit-scrollbar-thumb {
+  background: #ff8000;
+  border-radius: 5px;
+}
+.menu-scroll::-webkit-scrollbar-track {
+  background: #ffd6b3;
 }
 
 .menu-scroll > * {
-    scroll-snap-align: start;
+  scroll-snap-align: start;
+  flex: 0 0 260px;
 }
 
+@media (max-width: 1024px) {
+  .menu-scroll > * {
+    flex: 0 0 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .menu-scroll > * {
+    flex: 0 0 180px;
+  }
+}
 /* Menu End */
 
 /*Popup login*/
-
 .popup {
   position: fixed;
   top: 0; left: 0;
@@ -218,22 +255,14 @@ section {
   border-bottom: 8px solid transparent;
   border-left: 12px solid #FF8000;
 }
-
-.whyUs-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 1200px;
-}
-
-.whyUs-content {
-    display: flex;
+@media (min-width: 768px) {
+  .whyUs-content {
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
-    width: 100%;
+  }
 }
+
 /* Why Us End */
 
 /* Review Start */
@@ -246,9 +275,12 @@ section {
     flex-direction: column;
     background-color: #A03D00;
     border-radius: 10px;
-    margin: 1rem;
     min-height: 300px;
     background: linear-gradient(135deg, #A03D00, #4B1A00);
+}
+
+.review-text {
+  text-align: justify;
 }
 
 .review-card:hover {
@@ -257,3 +289,156 @@ section {
     box-shadow: 4px 4px 10px #4B1A00;
 }
 /* Review End */
+
+/* HERO RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .hero-text {
+    border-left: none;
+    padding: 1rem 0;
+  }
+
+  .hero-image img {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+
+  .hero-btn {
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+  }
+}
+
+/* BEST DEALS RESPONSIVE */
+@media (max-width: 768px) {
+  .bestDeal-item {
+    grid-template-columns: 1fr !important;
+    padding: 0 1rem;
+  }
+
+  .deal-card {
+    min-height: auto;
+  }
+
+  .deal-card img {
+    height: 160px;
+  }
+}
+
+/* WHY US RESPONSIVE */
+@media (max-width: 768px) {
+  .whyUs-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .whyUs-img img {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .whyUs-content h1 {
+    font-size: 1.8rem;
+    margin-top: 1rem;
+  }
+}
+
+/* REVIEW RESPONSIVE */
+@media (max-width: 1024px) {
+  .review-content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .review-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 640px) {
+  .review-card {
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
+
+  .review-text {
+    font-size: 0.95rem;
+  }
+}
+
+
+/* HEADER RESPONSIVE */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 2rem;
+    top: 1.8rem;
+    z-index: 1100;
+  }
+
+  .navbar ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 80%;
+    max-width: 300px;
+    background-color: #fff;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+    transition: right 0.4s ease;
+    padding-top: 6rem;
+    gap: 1.5rem;
+    z-index: 1000;
+  }
+
+  .navbar::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    z-index: 900;
+  }
+
+  .navbar ul.active {
+    right: 0;
+  }
+
+  .navbar ul.active ~ .navbar::before {
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .fill-btn,
+  .outline-btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 0;
+  }
+}
+
+/* FOOTER RESPONSIVE */
+@media (max-width: 640px) {
+  .footer-container {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
+}

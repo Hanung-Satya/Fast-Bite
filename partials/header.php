@@ -1,34 +1,52 @@
 <header class="fixed">
-    <div class="header-container">
-        <a href="/FastBite/index.php#home" class="logo">Fast<span class="gradient-txt">Bite</span></a>
-        <nav class="navbar">
-            <ul class="ul-links">
-                <li><a href="/FastBite/index.php#home">Home</a></li>
-                <li><a href="/FastBite/index.php#whyUs">Why Us</a></li>
-                <li><a href="/FastBite/index.php#menu">Menu</a></li>
+  <div class="header-container">
+    <a href="../index.php#home" class="logo">
+      Fast<span class="gradient-txt">Bite</span>
+    </a>
 
-                <?php if (isset($_SESSION['user'])) : ?>
-                    <li><a href="/FastBite/cart.php">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </a></li>
-                    <li class="user-dropdown relative">
-                        <a id="user-icon" href="#" class="text-xl">
-                            <i class="fa-solid fa-circle-user"></i>
-                        </a>
-                        <ul class="dropdown-menu absolute right-0 top-8 bg-white border border-gray-200 rounded-lg shadow-lg z-50" hidden>
-                            <li>
-                                <a href="/FastBite/auth/logout.php" class="outline-btn rounded-lg flex items-center justify-center gap-2 text-sm py-1 px-3">
-                                    <i class="fa-solid fa-right-from-bracket "></i>Logout 
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+    <nav class="navbar">
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
 
-                <?php else : ?>
-                    <li><a href="/FastBite/auth/login.php" class="fill-btn">Sign In</a></li>
-                    <li><a href="/FastBite/auth/register.php" class="outline-btn">Sign Up</a></li>
-                <?php endif; ?>
+      <ul class="ul-links" id="nav-links">
+        <li><a href="../index.php#home">Home</a></li>
+        <li><a href="../index.php#whyUs">Why Us</a></li>
+        <li><a href="../index.php#menu">Menu</a></li>
+
+        <?php if (isset($_SESSION['user'])) : ?>
+          <li><a href="../cart.php"><i class="fa-solid fa-cart-shopping"></i></a></li>
+          <li class="user-dropdown relative">
+            <a id="user-icon" href="#" class="text-xl"><i class="fa-solid fa-circle-user"></i></a>
+            <ul class="dropdown-menu absolute right-0 top-8 bg-white border border-gray-200 rounded-lg shadow-lg z-50" hidden>
+              <li>
+                <a href="../auth/logout.php" class="outline-btn rounded-lg flex items-center justify-center gap-2 text-sm py-1 px-3">
+                  <i class="fa-solid fa-right-from-bracket"></i>Logout
+                </a>
+              </li>
             </ul>
-        </nav>
-    </div>
+          </li>
+        <?php else : ?>
+          <li><a href="../auth/login.php" class="fill-btn">Sign In</a></li>
+          <li><a href="../auth/register.php" class="outline-btn">Sign Up</a></li>
+        <?php endif; ?>
+      </ul>
+    </nav>
+  </div>
 </header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+
+  toggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    toggle.classList.toggle("open");
+
+    if (toggle.classList.contains("open")) {
+      toggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+    } else {
+      toggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }
+  });
+</script>

@@ -47,7 +47,7 @@
       if (e.key === 'Escape') hide(dont.checked);
     });
   });
-})();
+});
 
 
 
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showPopup();
       } else {
         const productId = btn.getAttribute('data-id');
-        window.location.href = `/FastBite/cart.php?add=${productId}`;
+        window.location.href = `./cart.php?add=${productId}`;
       }
     });
   });
@@ -126,13 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (loginBtn) {
     loginBtn.addEventListener('click', () => {
-      window.location.href = '/FastBite/auth/login.php';
+      window.location.href = './auth/login.php';
     });
   }
 
   if (registerBtn) {
     registerBtn.addEventListener('click', () => {
-      window.location.href = '/FastBite/auth/register.php';
+      window.location.href = './auth/register.php';
     });
   }
 });

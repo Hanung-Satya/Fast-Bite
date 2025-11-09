@@ -3,21 +3,19 @@ session_start();
 include './config/db.php';
 
 if (!isset($_SESSION['user'])) {
-    header("Location: /FastBite/auth/login.php");
+    header("Location: auth/login.php");
     exit;
 }
 
-// Inisialisasi keranjang (cart) jika belum ada
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
-
 
 // Tambah produk ke cart
 if (isset($_GET['add'])) {
     $id = intval($_GET['add']);
 
-    // Ambil data produk dari database
+    // Ambil data dari database
     $stmt = $conn->prepare("SELECT id, name, price, stock, image FROM products WHERE id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -25,7 +23,7 @@ if (isset($_GET['add'])) {
     $product = $result->fetch_assoc();
 
     if ($product) {
-        // Jika produk sudah ada di cart → tambahkan quantity
+        // Jika produk sudah ada di cart, tambahkan quantity
         if (isset($_SESSION['cart'][$id])) {
             if ($_SESSION['cart'][$id]['qty'] < $product['stock']) {
                 $_SESSION['cart'][$id]['qty']++;
@@ -33,7 +31,7 @@ if (isset($_GET['add'])) {
                 $_SESSION['error'] = "Stok produk tidak cukup.";
             }
         } else {
-            // Jika belum ada → tambahkan produk ke cart
+            // Jika belum ada, tambahkan produk ke cart
             $_SESSION['cart'][$id] = [
                 'id' => $product['id'],
                 'name' => $product['name'],
@@ -78,7 +76,7 @@ if (isset($_POST['update_cart'])) {
 }
 
 
-// Checkout → redirect ke WhatsApp
+// Checkout, redirect ke WhatsApp
 if (isset($_GET['checkout'])) {
     if (empty($_SESSION['cart'])) {
         $_SESSION['error'] = "Keranjang masih kosong.";
@@ -113,9 +111,11 @@ if (isset($_GET['checkout'])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Keranjang Belanja</title>
+    <title>FastBite - Cart</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/output.css">
+    <script defer src="https://cdn.tailwindcss.com"></script>
+    <script defer src="assets/js/script.js"></script>
     <script defer src="https://kit.fontawesome.com/5fd6ecb4fe.js" crossorigin="anonymous"></script>
 </head>
 
@@ -133,7 +133,7 @@ if (isset($_GET['checkout'])) {
         <?php if (empty($_SESSION['cart'])): ?>
             <p class="text-center text-gray-600 mb-4">Your Cart is Empty!</p>
             <div class="text-center">
-                <a href="index.php#menu" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition">Kembali ke Menu</a>
+                <a href="index.php#menu" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition">Back to Menu</a>
             </div>
         <?php else: ?>
             <form action="cart.php" method="post">
@@ -157,7 +157,7 @@ if (isset($_GET['checkout'])) {
                             ?>
                                 <tr class="hover:bg-orange-50 transition">
                                     <td class="p-4">
-                                        <img src="/FastBite/uploads/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" width="60" class="inline-block mr-4 rounded-md shadow-sm">
+                                        <img src="./uploads/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['name']) ?>" width="60" class="inline-block mr-4 rounded-md shadow-sm">
                                         <span class="font-medium text-gray-800"><?= htmlspecialchars($item['name']) ?></span>
                                     </td>
                                     <td class="p-4 text-center">
